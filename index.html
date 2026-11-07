@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SergoInvest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap">
+<style>
+/* Libro de cartera: columna única, cabecera fija con pestañas, tablas contables con cifras en monoespaciada */
+:root{
+  --bg:#f4f6f4; --surface:#ffffff; --sunken:#eaeeeb; --line:#d6ddd8; --line-strong:#b7c2ba;
+  --fg:#17231d; --muted:#5b6a61; --faint:#86948b;
+  --accent:#1d6b57; --accent-soft:#dcebe5; --accent-fg:#ffffff;
+  --pos:#1f7a4a; --neg:#b3402c; --warn:#9a6a00; --warn-soft:#fbf1d9; --neg-soft:#f8e3de; --info-soft:#e3ecf5; --info:#2f5b86;
+  --chart-area:rgba(29,107,87,.12);
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1512; --surface:#161e1a; --sunken:#1c2621; --line:#2a3630; --line-strong:#3b4a42;
+  --fg:#e4ebe6; --muted:#9aaba1; --faint:#6f8077;
+  --accent:#5cc2a3; --accent-soft:#1d3a31; --accent-fg:#0b1512;
+  --pos:#5fcf8f; --neg:#f08a72; --warn:#e2b54a; --warn-soft:#332a12; --neg-soft:#3a1f19; --info-soft:#17283a; --info:#8db8e6;
+  --chart-area:rgba(92,194,163,.14); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1512; --surface:#161e1a; --sunken:#1c2621; --line:#2a3630; --line-strong:#3b4a42;
+  --fg:#e4ebe6; --muted:#9aaba1; --faint:#6f8077;
+  --accent:#5cc2a3; --accent-soft:#1d3a31; --accent-fg:#0b1512;
+  --pos:#5fcf8f; --neg:#f08a72; --warn:#e2b54a; --warn-soft:#332a12; --neg-soft:#3a1f19; --info-soft:#17283a; --info:#8db8e6;
+  --chart-area:rgba(92,194,163,.14); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.45}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-block:10px}
+.brand{font-family:var(--f-display);font-size:20px;letter-spacing:.01em;margin:0}
+.brand small{font-family:var(--f-body);font-weight:400;font-size:12px;color:var(--muted);margin-left:8px;letter-spacing:0}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;flex:1 1 auto;min-width:0;scrollbar-width:none}
+nav.tabs a{padding:7px 12px;border-radius:var(--r);color:var(--muted);text-decoration:none;font-weight:500;white-space:nowrap}
+nav.tabs a[aria-current="page"]{background:var(--accent-soft);color:var(--accent)}
+nav.tabs a:hover{color:var(--fg)}
+.estado{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--faint)}
+.dot.ok{background:var(--pos)} .dot.warn{background:var(--warn)}
+main{padding-block:20px 60px;display:grid;gap:20px}
+h2{font-family:var(--f-display);font-size:18px;margin:0;text-wrap:balance}
+h3{font-size:13px;font-weight:600;margin:0;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+p{margin:0}
+.muted{color:var(--muted)} .small{font-size:12px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+section.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px;min-width:0;align-content:start}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.kpi{background:var(--surface);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.kpi .lab{font-size:12px;color:var(--muted)}
+.kpi .val{font-family:var(--f-num);font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi .sub{font-size:12px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.tbl-wrap{overflow-x:auto;margin-inline:-16px;padding-inline:16px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{font-weight:500;color:var(--muted);text-align:left;font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line-strong);white-space:nowrap}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th.r,td.r{text-align:right}
+tbody tr.click{cursor:pointer} tbody tr.click:hover td{background:var(--sunken)}
+tfoot td{font-weight:600;border-top:1px solid var(--line-strong);border-bottom:0}
+.fname{font-weight:500} .isin{font-family:var(--f-num);font-size:11px;color:var(--faint)}
+.pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--sunken);color:var(--muted);white-space:nowrap}
+.pill.accent{background:var(--accent-soft);color:var(--accent)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.neg{background:var(--neg-soft);color:var(--neg)}
+.pill.info{background:var(--info-soft);color:var(--info)}
+.btn{font:inherit;font-weight:500;border:1px solid var(--line-strong);background:var(--surface);color:var(--fg);padding:7px 12px;border-radius:var(--r);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--sunken)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.danger{color:var(--neg);border-color:var(--neg)}
+.btn.sm{padding:3px 8px;font-size:12px}
+.btn.link{border:0;background:none;color:var(--accent);padding:0;font-size:12px}
+.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.avisos{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.avisos li{display:flex;gap:8px;align-items:baseline;font-size:13px;padding:8px 10px;border-radius:var(--r);background:var(--sunken)}
+.avisos li.error{background:var(--neg-soft)} .avisos li.aviso{background:var(--warn-soft)} .avisos li.info{background:var(--info-soft)}
+.avisos li .pill{flex:none}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font-family:var(--f-num);font-size:11px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:6px;background:var(--accent)}
+.legend i.dash{background:none;border-top:2px dashed var(--faint);height:0}
+.bars{display:grid;gap:14px;align-content:start}
+.bar-row{display:grid;gap:4px}
+.bar-row .row{justify-content:space-between}
+.bar{height:6px;background:var(--sunken);border-radius:3px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent)}
+.empty{padding:28px;text-align:center;display:grid;gap:10px;justify-items:center}
+form.f{display:grid;gap:12px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+label.fld{display:grid;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+label.fld span.hint{font-size:11px;color:var(--faint)}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r);padding:7px 9px;width:100%;min-width:0}
+input.numi{font-family:var(--f-num)}
+textarea{font-family:var(--f-num);font-size:12px;min-height:120px}
+dialog{border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--fg);padding:0;width:min(720px,calc(100vw - 24px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(10,20,15,.45)}
+.dlg{padding:18px;display:grid;gap:14px}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--sunken);padding:3px;border-radius:var(--r)}
+.seg button{flex:1 1 auto;font:inherit;font-size:13px;border:0;background:none;padding:6px 10px;border-radius:4px;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 0 0 1px var(--line)}
+.sim{background:var(--sunken);border-radius:var(--r);padding:12px;display:grid;gap:6px;font-size:13px}
+.sim .row{justify-content:space-between}
+.err{color:var(--neg);font-size:13px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px}
+.kv dt{color:var(--muted)} .kv dd{margin:0;text-align:right}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:var(--r);font-size:13px;z-index:20}
+.note{font-size:12px;color:var(--muted);max-width:70ch}
+@media (max-width:600px){.kpi .val{font-size:19px}.brand small{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<style>html{color-scheme:light}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1 class="brand">SergoInvest<small>Cartera de fondos · motor fiscal FIFO · versión de prueba</small></h1>
+    <nav class="tabs" id="tabs" aria-label="Secciones">
+      <a href="#resumen" data-v="resumen">Resumen</a>
+      <a href="#fondo" data-v="fondo">Fondo</a>
+      <a href="#operaciones" data-v="operaciones">Operaciones</a>
+      <a href="#fiscal" data-v="fiscal">Fiscalidad</a>
+      <a href="#datos" data-v="datos">Datos y VL</a>
+    </nav>
+    <div class="estado" id="estado"><span class="dot"></span><span>Cargando…</span></div>
+  </div>
+</header>
+<main class="wrap" id="app">
+  <section class="panel empty"><h2>Cargando tu cartera</h2><p class="muted">Leyendo operaciones y valores liquidativos guardados.</p></section>
+</main>
+<dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

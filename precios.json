@@ -1,0 +1,126 @@
+{
+ "actualizado": null,
+ "fondos": {
+  "ES0159259011": {
+   "nombre": "Magallanes European Equity FI Clase M",
+   "serie": [
+    [
+     "2026-10-29",
+     285.1
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "ES0112611001": {
+   "nombre": "Azvalor Internacional FI",
+   "serie": [
+    [
+     "2026-10-29",
+     368.694341
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "ES0124037013": {
+   "nombre": "Cobas Selecci\u00f3n FI Clase D",
+   "serie": [
+    [
+     "2026-09-10",
+     295.392238
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "FR0000447823": {
+   "nombre": "AXA Tr\u00e9sor Court Terme C",
+   "serie": [
+    [
+     "2026-11-03",
+     2691.359
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "IE00BYX5N771": {
+   "nombre": "Fidelity MSCI Japan Index Fund P-ACC-EUR",
+   "serie": [
+    [
+     "2026-11-03",
+     10.3636
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "ES0173311103": {
+   "nombre": "Renta 4 Multigesti\u00f3n Numantia Patrimonio Global FI",
+   "serie": [
+    [
+     "2026-11-03",
+     29.980547
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "ES0156572002": {
+   "nombre": "MyInvestor Cartera Permanente FI",
+   "serie": [
+    [
+     "2026-11-03",
+     115.57942
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "IE0007987708": {
+   "nombre": "Vanguard European Stock Index Fund EUR Acc",
+   "serie": [
+    [
+     "2026-11-03",
+     42.8462
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "LU0690375182": {
+   "nombre": "Fundsmith Equity Fund T EUR Acc",
+   "serie": [
+    [
+     "2026-11-03",
+     65.075841
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "IE00B42W4L06": {
+   "nombre": "Vanguard Global Small-Cap Index Fund EUR Acc",
+   "serie": [
+    [
+     "2026-11-03",
+     432.4219
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "IE0031786696": {
+   "nombre": "Vanguard Emerging Markets Stock Index Fund EUR Acc",
+   "serie": [
+    [
+     "2026-11-03",
+     297.237647
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  },
+  "IE0032126645": {
+   "nombre": "Vanguard U.S. 500 Stock Index Fund EUR Acc",
+   "serie": [
+    [
+     "2026-11-03",
+     82.320626
+    ]
+   ],
+   "fuente": "Importado de la versi\u00f3n de prueba"
+  }
+ },
+ "resultados": []
+}

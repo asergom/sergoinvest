@@ -1,0 +1,41 @@
+name: Actualizar VL
+
+on:
+  workflow_dispatch:
+    inputs:
+      isins:
+        description: "ISIN separados por comas (vacío = los que ya están en precios.json)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-vl
+  cancel-in-progress: false
+
+jobs:
+  vl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Consultar valores liquidativos
+        env:
+          ISINS: ${{ github.event.inputs.isins }}
+        run: node scripts/actualizar-vl.mjs
+      - name: Guardar precios.json
+        run: |
+          if git diff --quiet -- precios.json; then
+            echo "Sin cambios en precios.json"
+            exit 0
+          fi
+          git config user.name "sergoinvest-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add precios.json
+          git commit -m "VL actualizados $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push

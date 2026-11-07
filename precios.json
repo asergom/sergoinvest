@@ -1,15 +1,19 @@
 {
- "actualizado": null,
+ "actualizado": "2026-11-07T12:51:04.765Z",
  "fondos": {
   "ES0159259011": {
-   "nombre": "Magallanes European Equity FI Clase M",
+   "nombre": "Magallanes European Equity M FI",
    "serie": [
     [
      "2026-10-29",
      285.1
+    ],
+    [
+     "2026-11-05",
+     288.21544
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "ES0112611001": {
    "nombre": "Azvalor Internacional FI",
@@ -17,59 +21,83 @@
     [
      "2026-10-29",
      368.694341
+    ],
+    [
+     "2026-11-05",
+     345.39309
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "ES0124037013": {
-   "nombre": "Cobas Selecci\u00f3n FI Clase D",
+   "nombre": "Cobas Selección D FI",
    "serie": [
     [
      "2026-09-10",
      295.392238
+    ],
+    [
+     "2026-11-05",
+     299.60303
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "FR0000447823": {
-   "nombre": "AXA Tr\u00e9sor Court Terme C",
+   "nombre": "AXA Trésor Court Terme C",
    "serie": [
     [
      "2026-11-03",
      2691.359
+    ],
+    [
+     "2026-11-05",
+     2691.8836
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "IE00BYX5N771": {
-   "nombre": "Fidelity MSCI Japan Index Fund P-ACC-EUR",
+   "nombre": "Fidelity MSCI Japan Index Fund EUR P Acc",
    "serie": [
     [
      "2026-11-03",
      10.3636
+    ],
+    [
+     "2026-11-05",
+     10.3273
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "ES0173311103": {
-   "nombre": "Renta 4 Multigesti\u00f3n Numantia Patrimonio Global FI",
+   "nombre": "Renta 4 Multigestión Numantia Patrimonio Global FI",
    "serie": [
     [
      "2026-11-03",
      29.980547
+    ],
+    [
+     "2026-11-04",
+     30.81098
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "ES0156572002": {
-   "nombre": "MyInvestor Cartera Permanente FI",
+   "nombre": "Myinvestor Cartera Permanente FI",
    "serie": [
     [
      "2026-11-03",
      115.57942
+    ],
+    [
+     "2026-11-05",
+     117.02898
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "IE0007987708": {
    "nombre": "Vanguard European Stock Index Fund EUR Acc",
@@ -77,9 +105,13 @@
     [
      "2026-11-03",
      42.8462
+    ],
+    [
+     "2026-11-06",
+     42.7919
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "LU0690375182": {
    "nombre": "Fundsmith Equity Fund T EUR Acc",
@@ -87,9 +119,13 @@
     [
      "2026-11-03",
      65.075841
+    ],
+    [
+     "2026-11-06",
+     66.4078
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "IE00B42W4L06": {
    "nombre": "Vanguard Global Small-Cap Index Fund EUR Acc",
@@ -97,9 +133,13 @@
     [
      "2026-11-03",
      432.4219
+    ],
+    [
+     "2026-11-06",
+     425.8472
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "IE0031786696": {
    "nombre": "Vanguard Emerging Markets Stock Index Fund EUR Acc",
@@ -107,9 +147,13 @@
     [
      "2026-11-03",
      297.237647
+    ],
+    [
+     "2026-11-06",
+     284.9118
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   },
   "IE0032126645": {
    "nombre": "Vanguard U.S. 500 Stock Index Fund EUR Acc",
@@ -117,10 +161,99 @@
     [
      "2026-11-03",
      82.320626
+    ],
+    [
+     "2026-11-06",
+     80.8964
     ]
    ],
-   "fuente": "Importado de la versi\u00f3n de prueba"
+   "fuente": "Morningstar"
   }
  },
- "resultados": []
+ "resultados": [
+  {
+   "isin": "ES0159259011",
+   "ok": true,
+   "vl": 288.21544,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "ES0112611001",
+   "ok": true,
+   "vl": 345.39309,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "ES0124037013",
+   "ok": true,
+   "vl": 299.60303,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "FR0000447823",
+   "ok": true,
+   "vl": 2691.8836,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "IE00BYX5N771",
+   "ok": true,
+   "vl": 10.3273,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "ES0173311103",
+   "ok": true,
+   "vl": 30.81098,
+   "fecha": "2026-11-04",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "ES0156572002",
+   "ok": true,
+   "vl": 117.02898,
+   "fecha": "2026-11-05",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "IE0007987708",
+   "ok": true,
+   "vl": 42.7919,
+   "fecha": "2026-11-06",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "LU0690375182",
+   "ok": true,
+   "vl": 66.4078,
+   "fecha": "2026-11-06",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "IE00B42W4L06",
+   "ok": true,
+   "vl": 425.8472,
+   "fecha": "2026-11-06",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "IE0031786696",
+   "ok": true,
+   "vl": 284.9118,
+   "fecha": "2026-11-06",
+   "fuente": "Morningstar"
+  },
+  {
+   "isin": "IE0032126645",
+   "ok": true,
+   "vl": 80.8964,
+   "fecha": "2026-11-06",
+   "fuente": "Morningstar"
+  }
+ ]
 }
